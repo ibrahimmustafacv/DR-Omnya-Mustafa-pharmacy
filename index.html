@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صيدلية الهجرسي - Omnya Mustafa</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: white;
+            text-align: center;
+        }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            padding-top: 50px;
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: none;
+        }
+        .name {
+            font-size: 24px;
+            margin: 10px 0;
+            color: white;
+        }
+        .social-links a {
+            display: block;
+            margin: 10px 0;
+            padding: 15px;
+            text-decoration: none;
+            color: white;
+            background-color: transparent;
+            border: 2px solid white;
+            border-radius: 25px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 400px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .social-links a:hover {
+            background-color: white;
+            color: black;
+        }
+        .menu-button {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            border-radius: 50%;
+            padding: 10px;
+            z-index: 2;
+        }
+        
+        /* الأيقونات الأربعة */
+        .delivery-icon,
+        .search-icon,
+        .info-icon,
+        .services-icon {
+            width: 70px;
+            height: 70px;
+            cursor: pointer;
+            margin: 20px 5px;
+            display: inline-block;
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s;
+        }
+        .delivery-icon:hover,
+        .search-icon:hover,
+        .info-icon:hover,
+        .services-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        /* القوائم المنبثقة - واحدة لكل أيقونة */
+        .delivery-list,
+        .search-list,
+        .info-list,
+        .services-list {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px auto;
+            width: 85%;
+            max-width: 350px;
+            text-align: right;
+            direction: rtl;
+        }
+        .list-item {
+            margin: 8px 0;
+            cursor: pointer;
+            color: white;
+            transition: color 0.3s;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .list-item:hover {
+            color: #00ff00;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        /* عناصر قابلة للنقر - بني داكن */
+        .clickable-item {
+            margin: 10px 0;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 5px;
+            background-color: rgba(79, 52, 25, 0.8);
+            border-right: 3px solid #D4A76A;
+            text-align: right;
+            direction: rtl;
+            transition: all 0.3s;
+        }
+        .clickable-item:hover {
+            background-color: rgba(101, 67, 33, 0.9);
+            color: #FFD700;
+        }
+        
+        /* محتوى مخفي - نص أبيض على خلفية بنية */
+        .hidden-content {
+            display: none;
+            padding: 10px;
+            background-color: rgba(64, 42, 20, 0.9);
+            margin-top: 5px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: white;
+            text-align: right;
+            direction: rtl;
+            line-height: 1.5;
+            border-right: 2px solid #D4A76A;
+        }
+        
+        /* أسئلة شائعة - بني داكن */
+        .faq-question {
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            padding: 8px;
+            margin: 5px 0;
+            background-color: rgba(79, 52, 25, 0.8);
+            border-radius: 5px;
+            text-align: right;
+            direction: rtl;
+            border-right: 2px solid #D4A76A;
+        }
+        .faq-question:hover {
+            color: #FFD700;
+        }
+        .faq-answer {
+            display: none;
+            padding: 8px;
+            background-color: rgba(64, 42, 20, 0.9);
+            margin: 5px 0 15px 0;
+            border-radius: 5px;
+            font-size: 14px;
+            color: white;
+            text-align: right;
+            direction: rtl;
+            line-height: 1.5;
+        }
+        
+        /* نصائح صحية - بني داكن */
+        .health-tip-title {
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            padding: 8px;
+            margin: 5px 0;
+            background-color: rgba(79, 52, 25, 0.8);
+            border-radius: 5px;
+            text-align: right;
+            direction: rtl;
+            border-right: 2px solid #D4A76A;
+        }
+        .health-tip-title:hover {
+            color: #FFD700;
+        }
+        .health-tip-content {
+            display: none;
+            padding: 8px;
+            background-color: rgba(64, 42, 20, 0.9);
+            margin: 5px 0 15px 0;
+            border-radius: 5px;
+            font-size: 14px;
+            color: white;
+            text-align: right;
+            direction: rtl;
+            line-height: 1.5;
+        }
+        
+        /* أزرار المطور - مصغرة بحسب النص */
+        .creator-section {
+            margin: 20px auto 15px auto;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .creator-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 5px 8px;
+            padding: 8px 15px;
+            text-decoration: none;
+            color: white;
+            background-color: transparent;
+            border: 2px solid white;
+            border-radius: 20px;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 14px;
+            white-space: nowrap;
+            min-width: auto;
+        }
+        
+        .creator-btn:hover {
+            background-color: white;
+            color: black;
+        }
+        
+        .creator-icon {
+            margin-left: 6px;
+            font-size: 14px;
+        }
+        
+        /* جملة المطور - لون أبيض */
+        .creator-note {
+            font-size: 12px;
+            color: white; /* تغيير إلى الأبيض */
+            margin-top: 10px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop class="video-background" playsinline>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <button class="menu-button" onclick="toggleNotification()">⋮</button>
+
+    <div class="content">
+        <!-- صورة الصيدلية -->
+        <img src="image.png" alt="صيدلية الهجرسي" class="profile-pic">
+        <div class="name">صيدلية الهجرسي - Omnya Mustafa</div>
+
+        <!-- الأيقونات الأربعة -->
+        <img src="The phone currently.png" alt="خدمات الطوارئ والتوصيل" class="delivery-icon" onclick="toggleDeliveryList()">
+        <img src="Search.png" alt="البحث عن دواء" class="search-icon" onclick="toggleSearchList()">
+        <img src="information.png" alt="معلومات عن الصيدلية" class="info-icon" onclick="toggleInfoList()">
+        <img src="Services.png" alt="الخدمات والنصائح" class="services-icon" onclick="toggleServicesList()">
+
+        <!-- قائمة خدمات الطوارئ والتوصيل - لا تظهر الأرقام إلا عند الضغط -->
+        <div class="delivery-list" id="delivery-list">
+            <div class="list-item" onclick="callPhone('01091433846')">🚚 التوصيل السريع - اضغط للاتصال</div>
+            <div class="list-item" onclick="openWhatsAppDelivery()">📦 طلب توصيل دواء للمنزل عبر الواتساب</div>
+            
+            <div class="list-item" onclick="callPhone('01019133272')">🚨 الطوارئ 24/7 - اضغط للاتصال</div>
+            <div class="list-item" onclick="openWhatsAppEmergency()">🆘 خدمة الطوارئ على مدار الساعة</div>
+            
+            <div class="list-item" onclick="callPhone('01011513260')">👨‍⚕️ استشارة صيدلي - اضغط للاتصال</div>
+            <div class="list-item" onclick="openWhatsAppConsultation()">💊 محادثة مباشرة مع صيدلي متخصص</div>
+        </div>
+
+        <!-- قائمة البحث عن دواء - لا تظهر الأرقام إلا عند الضغط -->
+        <div class="search-list" id="search-list">
+            <div class="list-item" onclick="openLink('https://tinyurl.com/dromnya3')">🔍 التحقق من توافر دواء معين</div>
+            <div class="list-item" onclick="searchMedicine()">💊 اضغط للتواصل معنا للاستفسار</div>
+            
+            <div class="list-item" onclick="openLink('https://tinyurl.com/dromnya4')">💰 أسعار الأدوية المطلوبة</div>
+            <div class="list-item" onclick="openWhatsAppPrice()">💵 اضغط للاستعلام عن أسعار أدوية محددة</div>
+        </div>
+
+        <!-- قائمة معلومات عن الصيدلية - محتوى مخفي -->
+        <div class="info-list" id="info-list">
+            <div class="clickable-item" onclick="toggleContent('info1')">📅 سنة التأسيس والخبرة</div>
+            <div class="hidden-content" id="info1">تأسست الصيدلية سنة 2018 ومن وقتها بنقدّم خدمة صيدلانية موثوقة هدفها صحة المريض قبل أي شيء. عندنا خبرة سنين في التعامل مع مختلف الحالات وتوفير الدواء والمستلزمات الطبية بأعلى جودة ممكنة.</div>
+            
+            <div class="clickable-item" onclick="toggleContent('info2')">👩‍⚕️ الصيدلي المسؤول</div>
+            <div class="hidden-content" id="info2">الصيدلية تحت إشراف صيدلي مسؤول الدكتورة امنية مصطفي متواجده دايما للرد على استفسارات المرضى وتقديم النصيحة الصحيحة عن استخدام الأدوية.</div>
+            
+            <div class="clickable-item" onclick="toggleContent('info3')">📜 الشهادات والتراخيص</div>
+            <div class="hidden-content" id="info3">الصيدلية حاصلة على جميع التراخيص الرسمية من الجهات المختصة. بنلتزم بكل القوانين والتعليمات الصادرة من وزارة الصحة وهيئة الدواء المصرية لضمان أمان وجودة الخدمة.</div>
+            
+            <div class="clickable-item" onclick="toggleContent('info4')">⭐ سياسة الجودة</div>
+            <div class="hidden-content" id="info4">بنحرص دايما على توفير أدوية أصلية من مصادر معتمدة فقط. نهتم بتخزين الدواء بطريقة صحيحة ونراجع تواريخ الصلاحية باستمرار. رضا المريض وسلامته هما أولويتنا الأولى.</div>
+            
+            <div class="clickable-item" onclick="toggleContent('info5')">🤝 الشركاء والموردين</div>
+            <div class="hidden-content" id="info5">بنتعامل مع شركات توزيع وموردين معتمدين داخل مصر. اختيار شركائنا بيتم بعناية لضمان جودة المنتج واستمرارية التوفير.</div>
+        </div>
+
+        <!-- قائمة الخدمات والنصائح - محتوى مخفي -->
+        <div class="services-list" id="services-list">
+            <div class="clickable-item" onclick="toggleContent('service1')">🩺 خدمات إضافية</div>
+            <div class="hidden-content" id="service1">قياس الضغط مجاناً - خدمات الحقن والربطط - استشارات تغذية - قياس مستوى السكر.</div>
+            
+            <div class="clickable-item" onclick="toggleContent('service2')">💊 الأدوية المتوفرة</div>
+            <div class="hidden-content" id="service2">جميع الأدوية متوفرة إن شاء الله من أدوية أساسية وأمراض مزمنة ومستلزمات طبية.</div>
+            
+            <div class="clickable-item">❓ الأسئلة الشائعة</div>
+            <div class="faq-question" onclick="toggleFaq(1)">مواعيد الصيدلية ايه؟</div>
+            <div class="faq-answer" id="faq1">الصيدلية شغالة كل يوم وممكن تكلمنا تعرف المواعيد بالظبط</div>
+            
+            <div class="faq-question" onclick="toggleFaq(2)">الصيدلية شغالة 24 ساعة؟</div>
+            <div class="faq-answer" id="faq2">أيوه الصيدلية فاتحة 24 ساعة عشان نكون دايما في خدمتك</div>
+            
+            <div class="faq-question" onclick="toggleFaq(3)">في توصيل لحد البيت؟</div>
+            <div class="faq-answer" id="faq3">أيوه في خدمة توصيل لحد باب البيت</div>
+            
+            <div class="faq-question" onclick="toggleFaq(4)">ينفع استبدال او استرجاع؟</div>
+            <div class="faq-answer" id="faq4">الاستبدال او الاسترجاع متاح في حالة الخطأ ومع الفاتورة</div>
+            
+            <div class="faq-question" onclick="toggleFaq(5)">الادوية عندكم مضمونة؟</div>
+            <div class="faq-answer" id="faq5">كل الادوية اصلية ومن شركات معتمدة</div>
+            
+            <div class="faq-question" onclick="toggleFaq(6)">في صيدلي موجود يرد على الاسئلة؟</div>
+            <div class="faq-answer" id="faq6">دايما في صيدلي موجود يساعدك ويرد على اي استفسار</div>
+            
+            <div class="faq-question" onclick="toggleFaq(7)">عندكم مستلزمات طبية؟</div>
+            <div class="faq-answer" id="faq7">ايوه متوفر اجهزة ضغط وسكر ومستلزمات طبية كتير</div>
+            
+            <div class="faq-question" onclick="toggleFaq(8)">في منتجات عناية بالبشرة والشعر؟</div>
+            <div class="faq-answer" id="faq8">ايوه عندنا منتجات موثوق فيها للعناية بالبشرة والشعر</div>
+            
+            <div class="faq-question" onclick="toggleFaq(9)">الدفع بيكون ازاي؟</div>
+            <div class="faq-answer" id="faq9">ممكن تدفع كاش او بطرق دفع تانية حسب المتاح</div>
+            
+            <div class="faq-question" onclick="toggleFaq(10)">في عروض او خصومات؟</div>
+            <div class="faq-answer" id="faq10">ايوه في عروض وخصومات بتنزل من وقت للتاني</div>
+            
+            <div class="clickable-item">💡 نصائح صحية</div>
+            <div class="health-tip-title" onclick="toggleTip(1)">اشربي مية كفاية طول اليوم</div>
+            <div class="health-tip-content" id="tip1">قلة شرب المية بتعمل صداع وإرهاق ومشاكل في الكلى. خلي ازازة المية دايما جنبك.</div>
+            
+            <div class="health-tip-title" onclick="toggleTip(2)">خلي بالك من طول القعدة قدام الموبايل</div>
+            <div class="health-tip-content" id="tip2">في 2026 استخدام الموبايل زاد قوي حاولي كل شوية تقومي وتتحركي وتريحي عينك.</div>
+            
+            <div class="health-tip-title" onclick="toggleTip(3)">ما تاخديش دوا من نفسك</div>
+            <div class="health-tip-content" id="tip3">اي دوا حتى المسكنات لازم يتاخد بحذر واسألي الصيدلي قبل الاستخدام.</div>
+            
+            <div class="health-tip-title" onclick="toggleTip(4)">الأكل الصحي بيفرق</div>
+            <div class="health-tip-content" id="tip4">حاولي تقللي اكل جاهز وسكريات ودخلي خضار وفاكهة في يومك.</div>
+            
+            <div class="health-tip-title" onclick="toggleTip(5)">النوم مش رفاهية</div>
+            <div class="health-tip-content" id="tip5">قلة النوم بتأثر على المناعة والتركيز حاولي تنامي من 7 ل 8 ساعات.</div>
+            
+            <div class="health-tip-title" onclick="toggleTip(6)">اهتمي بصحتك النفسية</div>
+            <div class="health-tip-content" id="tip6">التوتر والضغط بقوا جزء من الحياة خدي وقت لنفسك وكلمي حد قريب منك.</div>
+            
+            <div class="health-tip-title" onclick="toggleTip(7)">ماتهمليش الرياضة</div>
+            <div class="health-tip-content" id="tip7">حتى المشي نص ساعة في اليوم بيفرق في صحتك ومزاجك.</div>
+            
+            <div class="health-tip-title" onclick="toggleTip(8)">تابعي ضغطك وسكرك</div>
+            <div class="health-tip-content" id="tip8">حتى لو مش مريضة القياس الدوري بيطمنك ويكشف بدري.</div>
+            
+            <div class="health-tip-title" onclick="toggleTip(9)">خلي الادوية بعيد عن الاطفال</div>
+            <div class="health-tip-content" id="tip9">دايما خزني الادوية في مكان امن وبعيد عن متناول الاطفال.</div>
+            
+            <div class="health-tip-title" onclick="toggleTip(10)">اسألي الصيدلي دايما</div>
+            <div class="health-tip-content" id="tip10">الصيدلي موجود يساعدك ويوجهك صح في الاستخدام والبدائل.</div>
+        </div>
+
+        <p>صحتك تهمنا.. نقدم لكم دواءك بكل أمان</p>
+
+        <!-- روابط التواصل الاجتماعي -->
+        <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=100063974083426">Facebook</a>
+            <a href="#" onclick="openWhatsApp()">WhatsApp</a>
+            <a href="mailto:Omnyapharmacy@gmail.com">Email</a>
+            <a href="https://tinyurl.com/dromnya1">الفرع الأول - Location</a>
+            <a href="https://tinyurl.com/dromnya2">الفرع الثاني - Location</a>
+        </div>
+
+        <!-- أزرار المطور - مصغرة بحسب النص -->
+        <div class="creator-section">
+            <a href="https://ibrahimmustafacv.github.io/" target="_blank" class="creator-btn">
+                <span class="creator-icon">💼</span>
+                مشاريع أخرى
+            </a>
+            
+            <a href="https://ibrahimmustafacv.github.io/my-social-media-page/" target="_blank" class="creator-btn">
+                <span class="creator-icon">👨‍💻</span>
+                تابع المطور
+            </a>
+            
+            <div class="creator-note">تم التصميم والتطوير بواسطة إبراهيم مصطفى</div>
+        </div>
+    </div>
+
+    <script>
+        // دوال إظهار/إخفاء القوائم
+        function toggleDeliveryList() {
+            const list = document.getElementById('delivery-list');
+            list.style.display = list.style.display === "none" || list.style.display === "" ? "block" : "none";
+            closeOtherLists('delivery-list');
+        }
+        
+        function toggleSearchList() {
+            const list = document.getElementById('search-list');
+            list.style.display = list.style.display === "none" || list.style.display === "" ? "block" : "none";
+            closeOtherLists('search-list');
+        }
+        
+        function toggleInfoList() {
+            const list = document.getElementById('info-list');
+            list.style.display = list.style.display === "none" || list.style.display === "" ? "block" : "none";
+            closeOtherLists('info-list');
+        }
+        
+        function toggleServicesList() {
+            const list = document.getElementById('services-list');
+            list.style.display = list.style.display === "none" || list.style.display === "" ? "block" : "none";
+            closeOtherLists('services-list');
+        }
+        
+        function closeOtherLists(currentListId) {
+            const lists = ['delivery-list', 'search-list', 'info-list', 'services-list'];
+            lists.forEach(listId => {
+                if (listId !== currentListId) {
+                    document.getElementById(listId).style.display = "none";
+                }
+            });
+        }
+        
+        // دالة لعرض/إخفاء المحتوى المخفي
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+        
+        // دوال الأسئلة الشائعة
+        function toggleFaq(num) {
+            const answer = document.getElementById(`faq${num}`);
+            if (answer.style.display === "none" || answer.style.display === "") {
+                answer.style.display = "block";
+            } else {
+                answer.style.display = "none";
+            }
+        }
+        
+        // دوال النصائح الصحية
+        function toggleTip(num) {
+            const tip = document.getElementById(`tip${num}`);
+            if (tip.style.display === "none" || tip.style.display === "") {
+                tip.style.display = "block";
+            } else {
+                tip.style.display = "none";
+            }
+        }
+        
+        // دوال الاتصال والروابط
+        function openWhatsApp() {
+            const phone = "01091433846";
+            const message = "مرحباً، أريد الاستفسار عن دواء في صيدلية الهجرسي";
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+        
+        function openWhatsAppDelivery() {
+            const phone = "01091433846";
+            const message = "مرحباً، أريد طلب توصيل دواء للمنزل من صيدلية الهجرسي";
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+        
+        function openWhatsAppEmergency() {
+            const phone = "01019133272";
+            const message = "🚨 حالة طوارئ - أحتاج دواء عاجل من صيدلية الهجرسي";
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+        
+        function openWhatsAppConsultation() {
+            const phone = "01011513260";
+            const message = "👨‍⚕️ أريد استشارة صيدلانية من صيدلية الهجرسي";
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+        
+        function openWhatsAppPrice() {
+            const phone = "01091433846";
+            const message = "💰 أريد الاستفسار عن أسعار أدوية من صيدلية الهجرسي";
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+        
+        function searchMedicine() {
+            const medicine = prompt("أدخل اسم الدواء الذي تبحث عنه:");
+            if (medicine) {
+                window.open(`https://wa.me/01091433846?text=${encodeURIComponent(`🔍 أبحث عن دواء: ${medicine}`)}`, '_blank');
+            }
+        }
+        
+        function callPhone(number) {
+            if (confirm(`هل تريد الاتصال برقم: ${number}؟`)) {
+                window.location.href = `tel:${number}`;
+            }
+        }
+        
+        function openLink(url) {
+            window.location.href = url;
+        }
+        
+        function toggleNotification() {
+            alert("لتفعيل إشعارات الصيدلية:\n\n📱 على الهاتف: اضغط على ⋮ ثم 'إضافة إلى الشاشة الرئيسية'\n💻 على الكمبيوتر: اضغط على 🔔 في شريط العنوان\n\nلتصلك آخر العروض والنصائح الصحية!");
+        }
+        
+        // إغلاق القوائم عند النقر خارجها
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.delivery-icon, .search-icon, .info-icon, .services-icon') &&
+                !event.target.closest('.delivery-list, .search-list, .info-list, .services-list')) {
+                closeAllLists();
+            }
+        });
+        
+        function closeAllLists() {
+            const lists = ['delivery-list', 'search-list', 'info-list', 'services-list'];
+            lists.forEach(listId => {
+                document.getElementById(listId).style.display = "none";
+            });
+        }
+        
+        // إغلاق جميع المحتويات المخفية عند فتح قائمة جديدة
+        function closeAllHiddenContent() {
+            const hiddenContents = document.querySelectorAll('.hidden-content, .faq-answer, .health-tip-content');
+            hiddenContents.forEach(content => {
+                content.style.display = "none";
+            });
+        }
+        
+        // إغلاق جميع المحتويات عند فتح أي قائمة
+        document.querySelectorAll('.delivery-icon, .search-icon, .info-icon, .services-icon').forEach(icon => {
+            icon.addEventListener('click', closeAllHiddenContent);
+        });
+    </script>
+</body>
+</html>
