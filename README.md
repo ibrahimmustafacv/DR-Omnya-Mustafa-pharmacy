@@ -1,163 +1,74 @@
-# DR-Omnya-Mustafa-pharmacy
-DR-Omnya-Mustafa-pharmacy
-🏥 Elhagrasy Pharmacy – Omnya Pharmacy Website
-
-A modern and interactive pharmacy website for Elhagrasy Pharmacy (Omnya Pharmacy)
-Designed to provide comprehensive pharmaceutical services with a clean responsive and user friendly interface
-
-🌐 Live Website
-
-https://ibrahimmustafacv.github.io/pharmacy-website/
-
-✨ Key Features
-🏪 Pharmacy Information
-
-Detailed pharmacy profile
-
-Establishment year and professional experience
-
-Responsible licensed pharmacist
-
-Official certificates and licenses
-
-Quality policy
-
-Trusted partners and suppliers
-
-📞 Quick Contact Services
-
-Fast home delivery
-
-24/7 emergency service
-
-Direct pharmacist consultation
-
-One click phone and WhatsApp contact
-
-🔍 Medicine Search and Inquiry
-
-Medicine availability check
-
-Medicine price inquiry
-
-Search for specific medicines
-
-Suggest medicine alternatives
-
-🩺 Health Services
-
-Daily health tips
-
-Frequently asked questions FAQ
-
-Blood pressure and blood sugar measurements
-
-Nutrition and lifestyle consultations
-
-🎨 Website Design
-
-Dark modern theme
-
-Animated video background
-
-Clear navigation icons
-
-Fully responsive on all devices
-
-🚀 Local Setup
-Requirements
-
-Modern web browser
-
-Internet connection
-
-Setup Steps
-
-1 Download all project files
-2 Place all files in one folder
-3 Open index html in your browser
-
-📁 Project Structure
-
-pharmacy-website
-index html
-image png
-video mp4
-The phone currently png
-Search png
-information png
-Services png
-README md
-
-🔧 Customization
-
-Fast Delivery 01091433846
-Emergency 01019133272
-Pharmacist Consultation 01011513260
-
-Email
-Omnyapharmacy@gmail.com
-
-Branches
-https://tinyurl.com/dromnya1
-
-https://tinyurl.com/dromnya2
-
-📱 User Experience
-Mobile Devices
-
-Responsive layout
-
-Large easy buttons
-
-Vertical content flow
-
-Desktop and Tablets
-
-Clean content display
-
-Smooth interaction
-
-Fast performance
-
-🛡️ Privacy and Security
-
-No personal data collection
-
-Phone numbers appear only on click
-
-Safe external links
-
-🌍 Compatibility
-Browsers
-
-Google Chrome
-Mozilla Firefox
-Microsoft Edge
-Safari
-Opera
-
-Operating Systems
-
-Windows
-macOS
-iOS
-Android
-Linux
-
-📞 Contact Information
-
-For Customers
-Phone and WhatsApp 01091433846
-Email Omnyapharmacy@gmail.com
-
-For Developer
-Developer Ibrahim Mustafa
-Portfolio https://ibrahimmustafacv.github.io
-
-📄 License
-
-MIT License
-
-Designed and Developed by Ibrahim Mustafa
-Last Update 2024
+# 🏥 صيدلية الهجرسي – Omnya Mustafa
+
+<p align="center">
+  <img src="image.png" alt="شعار صيدلية الهجرسي" width="120" style="border-radius: 50%;" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/RTL-دعم_العربية-2C7A7B?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/مستجيب-للأجهزة-25D366?style=for-the-badge" />
+</p>
+
+<p align="center">
+  <a href="#-مميزات-المشروع">المميزات</a> •
+  <a href="#-التقنيات-المستخدمة">التقنيات</a> •
+  <a href="#-هيكل-المشروع">الهيكل</a> •
+  <a href="#-دليل-الاستخدام">الاستخدام</a> •
+  <a href="#-التخصيص">التخصيص</a> •
+  <a href="#-المطور">المطور</a>
+</p>
+
+---
+
+## 📖 نبذة عن المشروع
+
+**صيدلية الهجرسي** هي صفحة ويب تفاعلية عربية تمثل واجهة رقمية متكاملة للصيدلية، تهدف إلى تسهيل التواصل مع العملاء وتقديم خدمات صيدلانية متنوعة عبر الإنترنت. تم تصميم الصفحة لتكون **جذابة** و **سهلة الاستخدام** و **غنية بالمعلومات**، مع تركيز خاص على تجربة المستخدم السلسة على جميع الأجهزة.
+
+> 💡 **الرؤية**: تقديم تجربة رقمية تعكس روح الصيدلية في تقديم الرعاية الصحية، مع توفير أدوات سريعة للتواصل والاستعلام عن الأدوية والخدمات.
+
+---
+
+## ✨ مميزات المشروع
+
+| الميزة | الوصف |
+|--------|-------|
+| 🎬 **فيديو خلفية** | فيديو متحرك يضفي جواً حيوياً وجذاباً على الصفحة. |
+| 🖼️ **شعار الصيدلية** | عرض شعار الصيدلية بشكل دائري أنيق. |
+| 📱 **أيقونات تفاعلية** | أربع أيقونات رئيسية (الطوارئ، البحث، المعلومات، الخدمات) تنبثق منها قوائم منسدلة. |
+| 🚚 **خدمات الطوارئ والتوصيل** | أرقام اتصال مباشر للطوارئ، والتوصيل للمنزل، والاستشارات الصيدلانية عبر الواتساب. |
+| 🔍 **البحث عن دواء** | رابط للتحقق من توافر الأدوية، والاستعلام عن الأسعار. |
+| 📋 **معلومات عن الصيدلية** | محتوى تفاعلي عن سنة التأسيس، الصيدلي المسؤول، الشهادات، سياسة الجودة، والشركاء. |
+| ❓ **أسئلة شائعة (FAQ)** | قائمة موسعة من الأسئلة الشائعة مع إجاباتها (قابلة للطي). |
+| 💡 **نصائح صحية** | نصائح صحية يومية مع إمكانية عرضها وإخفائها. |
+| 🌐 **روابط التواصل الاجتماعي** | روابط مباشرة لفيسبوك، واتساب، البريد الإلكتروني، ومواقع الفروع. |
+| 👨‍💻 **قسم المطور** | أزرار للانتقال إلى مشاريع أخرى ومتابعة المطور. |
+| ⚡ **تفاعل سلس** | تأثيرات hover، إظهار/إخفاء المحتوى، وإغلاق القوائم تلقائياً عند النقر خارجها. |
+| 📱 **تصميم متجاوب** | يعمل بشكل مثالي على الهواتف الذكية والأجهزة اللوحية والحواسيب. |
+
+---
+
+## 🛠️ التقنيات المستخدمة
+
+- **HTML5** – هيكل الصفحة مع عناصر دلالية وميتا تاج محسنة.
+- **CSS3** – تصميم مخصص بالكامل مع:
+  - فيديو خلفية ثابت (`fixed`).
+  - تنسيقات متجاوبة (`media queries` ضمن الكود المدمج).
+  - تأثيرات `hover` و `transition`.
+  - ألوان متناسقة (أسود، أبيض، بني داكن، ذهبي).
+- **JavaScript (Vanilla ES6)** – منطق التفاعل الكامل:
+  - إظهار/إخفاء القوائم المنسدلة.
+  - إظهار/إخفاء المحتوى المخفي (نصوص، أسئلة، نصائح).
+  - فتح روابط الواتساب بأرقام ورسائل مخصصة.
+  - وظيفة الاتصال الهاتفي (مع تأكيد المستخدم).
+  - إغلاق تلقائي للقوائم عند النقر خارجها.
+- **Google Fonts** – (اختياري) يمكن إضافة خطوط عربية لتحسين المظهر.
+- **Font Awesome** – (اختياري) يمكن استخدامه بدلاً من الأيقونات النصية.
+
+> **ملاحظة**: المشروع لا يعتمد على أي مكتبات خارجية، كل الكود مكتوب يدوياً وبشكل نقي.
+
+---
+
+## 📂 هيكل المشروع
